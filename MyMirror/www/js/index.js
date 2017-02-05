@@ -21,6 +21,9 @@ function updateByName(zip){
     var url = "http://api.openweathermap.org/data/2.5/weather?" +
 	"q=" + zip +
 	"&APPID=" + APPID;
+	var handleWeatherApiResponse = function(response) {
+		
+	};
     sendRequest(url);
 }
 
@@ -29,16 +32,12 @@ function sendRequest(url){
     var xmlhttp = new XMLHttpRequest();
    xmlhttp.open("GET", url, true);
    console.log(url+xmlhttp);
-   //console.log(xmlhttp.status == 200);
     xmlhttp.onreadystatechange = function() {
 	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            var data = JSON.parse(xmlhttp.responseText);
-    // console.log(data);
+        var data = JSON.parse(xmlhttp.responseText);
 	    var weather = {};
 	    weather.code = data.weather[0].id;
 	    weather.humidity = data.main.humidity;
-	    // weather.wind = Math.round(data.wind.speed);
-	    /* NEW */
 	    weather.description = data.weather[0].description;
 	    weather.temp = K2C(data.main.temp);	
 		weather.iconId = data.weather[0].id;
@@ -138,6 +137,7 @@ function displayPrayerTimes(){
 		//var prayerData = JSON.parse(response);
 		storage.setItem("storedPrayerJSON", response);
 		console.log("Added data to cache:"+response);
+		displayPrayerData(response);
 		};
 	var currentMonth = date.toLocaleDateString("en-US",{month: 'short'});
 	if(storage.getItem("storedPrayerJSON") && storage.getItem("storedPrayerJSON").includes(currentMonth)){
@@ -146,7 +146,6 @@ function displayPrayerTimes(){
 		//storage.removeItem(key);
 	}else{
 		callPrayerApi(handleApiResponse);
-		displayPrayerData(storage.getItem("storedPrayerJSON"));
 	}
 }
 
@@ -184,3 +183,35 @@ function displayPrayerData(prayerJsonString){
 		};
     xmlhttp.send();
  }
+ 
+ var app = {
+    // Application Constructor
+    initialize: function() {
+        this.bindEvents();
+    },
+    // Bind Event Listeners
+    //
+    // Bind any events that are required on startup. Common events are:
+    // 'load', 'deviceready', 'offline', and 'online'.
+    bindEvents: function() {
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+    },
+    // deviceready Event Handler
+    //
+    // The scope of 'this' is the event. In order to call the 'receivedEvent'
+    // function, we must explicitly call 'app.receivedEvent(...);'
+    onDeviceReady: function() {
+        app.receivedEvent('deviceready');
+    },
+    // Update DOM on a Received Event
+    receivedEvent: function(id) {
+        var parentElement = document.getElementById(id);
+        var listeningElement = parentElement.querySelector('.listening');
+        var receivedElement = parentElement.querySelector('.received');
+
+        listeningElement.setAttribute('style', 'display:none;');
+        receivedElement.setAttribute('style', 'display:block;');
+
+        console.log('Received Event: ' + id);
+    }
+};

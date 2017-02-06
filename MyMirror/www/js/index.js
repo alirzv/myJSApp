@@ -202,16 +202,15 @@ function displayPrayerData(prayerJsonString){
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+		//window.plugins.insomnia.keepAwake( function() {console.log("Insomnia Activated")});
+		if (window.plugins.insomnia && window.plugins.insomnia.keepAwake) {
+				window.plugins.insomnia.keepAwake(function() {console.log("Insomnia Activated")},function() {console.log("Insomnia not Activated")});
+		} else {
+				alert("insomnia plugin missing");
+		}
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
         console.log('Received Event: ' + id);
     }
 };

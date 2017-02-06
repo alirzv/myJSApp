@@ -51,7 +51,7 @@ body {
 }
 
 .prayerTimes {
-	font-size: 20px;
+	font-size: 21px;
 	 position: fixed;
      bottom: 0;
      right: 0;
@@ -60,7 +60,7 @@ body {
 	text-align: right;
 	width:200px;
 	height: 220px;
-	padding: 2px;
+	padding: 1px;
 	//border: 1px solid blue;
 	vertical-align = bottom;
 }

@@ -14,6 +14,7 @@
     </author>
     <content src="index.html" />
 	<preference value="cli-6.3.0" name="phonegap-version"/>
+	<plugin name="cordova-plugin-insomnia" version="4.1.0" source="npm" />
 	<gap:plugin name="cordova-plugin-whitelist" source="npm"/>
 	<allow-intent href="http://*/*"/>
 	<allow-intent href="https://*/*"/>

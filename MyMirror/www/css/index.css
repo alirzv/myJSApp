@@ -46,34 +46,41 @@ body {
 	text-align: right;
 	width:600px;
 	height: 250px;
-	padding: 2px;
+	//padding: 2px;
 	//border: 1px solid blue;
 }
 
 .prayerTimes {
 	font-size: 21px;
-	 position: fixed;
-     bottom: 0;
-     right: 0;
+	position: fixed;
+	line-height : 17px;
+    bottom: 0;
+    right: 0;
     //float: right;
     color: white;
 	text-align: right;
 	width:200px;
 	height: 220px;
-	padding: 1px;
+	//padding: 1px;
 	//border: 1px solid blue;
 	vertical-align = bottom;
 }
 
+#sunrise,#zuhr,#asr, #maghrib, #isha{
+	font-size: 30px;
+}
+
 #clock{
-	font-size:100px;
-	vertical-align: top;
+	font-size:110px;
+	//vertical-align: top;
 }
 #day{
+	line-height : 17px;
 	font-size:25px;
 }
 #date{
-	font-size:25px;
+	line-height : 17px;
+	font-size:30px;
 }
 .icon {
   position: absolute;

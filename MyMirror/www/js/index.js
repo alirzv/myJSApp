@@ -12,7 +12,7 @@ window.onload = function () {
     temp = document.getElementById("temperature");
     humidity = document.getElementById("humidity");
     description = document.getElementById("description");
-	updateByName("newdelhi");
+	updateByName("110031");
 	displayPrayerTimes();
 	//findFile();
    }

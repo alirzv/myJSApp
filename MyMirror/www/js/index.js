@@ -47,7 +47,7 @@ function sendRequest(url){
 		var weather = {};
 		 weather.temp = ":(  ";
 		 weather.humidity = "No Data";
-		 weather.description = "Check Internet Connection !!""
+		 weather.description = "Check Internet Connection !!";
 		 weather.iconId = "800";
 		 update(weather);
 		console.log("Showing default weather data");
